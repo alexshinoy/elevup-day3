@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Budget Tracker Pro</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="container">
+
+<header>
+
+<h1>💰 Budget Tracker Pro</h1>
+
+<div class="header-buttons">
+
+<button id="themeToggle">
+🌙
+</button>
+
+<button id="exportCSV">
+Export CSV
+</button>
+
+<button id="exportPDF">
+Export PDF
+</button>
+
+</div>
+
+</header>
+
+<!-- BALANCE -->
+
+<div class="balance-card glass">
+
+<h3>Total Balance</h3>
+
+<h1 id="balance">
+₹0
+</h1>
+
+</div>
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="stat-card income-card">
+<h4>Total Income</h4>
+<p id="income">₹0</p>
+</div>
+
+<div class="stat-card expense-card">
+<h4>Total Expense</h4>
+<p id="expense">₹0</p>
+</div>
+
+<div class="stat-card savings-card">
+<h4>Savings</h4>
+<p id="savings">₹0</p>
+</div>
+
+</div>
+
+<!-- ANALYTICS -->
+
+<div class="analytics-card glass">
+
+<h2>📊 Analytics</h2>
+
+<div class="analytics-grid">
+
+<div>
+<h4>Total Transactions</h4>
+<p id="totalTransactions">0</p>
+</div>
+
+<div>
+<h4>Highest Expense</h4>
+<p>₹<span id="highestExpense">0</span></p>
+</div>
+
+<div>
+<h4>Highest Income</h4>
+<p>₹<span id="highestIncome">0</span></p>
+</div>
+
+</div>
+
+</div>
+
+<!-- BUDGET GOAL -->
+
+<div class="goal-card glass">
+
+<h3>Monthly Budget Goal</h3>
+
+<input
+type="number"
+id="budgetGoal"
+placeholder="Enter Monthly Goal">
+
+<button id="saveGoal">
+Save Goal
+</button>
+
+<div class="progress-container">
+
+<div id="progressBar"></div>
+
+</div>
+
+<p id="goalText">
+0%
+</p>
+
+</div>
+
+<!-- ADD TRANSACTION -->
+
+<div class="form-section glass">
+
+<h2>Add Transaction</h2>
+
+<form id="transactionForm">
+
+<input
+type="text"
+id="description"
+placeholder="Description"
+required>
+
+<input
+type="number"
+id="amount"
+placeholder="Amount"
+required>
+
+<select id="type">
+
+<option value="income">
+Income
+</option>
+
+<option value="expense">
+Expense
+</option>
+
+</select>
+
+<select id="category">
+
+<option value="Salary">Salary</option>
+<option value="Food">Food</option>
+<option value="Transport">Transport</option>
+<option value="Shopping">Shopping</option>
+<option value="Bills">Bills</option>
+<option value="Entertainment">Entertainment</option>
+<option value="Other">Other</option>
+
+</select>
+
+<button type="submit">
+Add
+</button>
+
+</form>
+
+</div>
+
+<!-- SEARCH + FILTER + SORT -->
+
+<div class="tools glass">
+
+<input
+type="text"
+id="search"
+placeholder="Search Transactions">
+
+<select id="filter">
+
+<option value="all">
+All Transactions
+</option>
+
+<option value="income">
+Income Only
+</option>
+
+<option value="expense">
+Expense Only
+</option>
+
+</select>
+
+<select id="sort">
+
+<option value="latest">
+Latest First
+</option>
+
+<option value="oldest">
+Oldest First
+</option>
+
+<option value="high">
+Highest Amount
+</option>
+
+<option value="low">
+Lowest Amount
+</option>
+
+</select>
+
+</div>
+
+<!-- CHART -->
+
+<div class="chart-card glass">
+
+<h2>Expense Analysis</h2>
+
+<div class="chart-wrapper">
+
+<canvas id="expenseChart"></canvas>
+
+</div>
+
+</div>
+
+<!-- RECENT ACTIVITY -->
+
+<div class="activity-card glass">
+
+<h2>🕒 Recent Activity</h2>
+
+<div id="recentActivity">
+
+No Recent Activity
+
+</div>
+
+</div>
+
+<!-- TRANSACTIONS -->
+
+<div class="history glass">
+
+<h2>Transaction History</h2>
+
+<ul id="transactionList"></ul>
+
+</div>
+
+</div>
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
